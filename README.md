@@ -6,7 +6,7 @@
 #### 软件架构
 软件架构说明
 
-![1691378083640](C:\Users\林枫\AppData\Roaming\Typora\typora-user-images\1691378083640.png)
+![1691385769793](img/1691385769793.png)
 
 Consumer 包：作为消费者调用服务提供方的接口。
 
@@ -35,7 +35,7 @@ public interface HelloService {
 
 ##### 编写远程调用过程所需要实现的一些具体细节
 
-![1691378523127](C:\Users\林枫\AppData\Roaming\Typora\typora-user-images\1691378523127.png)
+![1691385813527](img/1691385813527.png)
 
 ###### Invocation：
 
@@ -601,27 +601,27 @@ public class Consumer {
 
 -Dmock=return:Service_is_being_developed
 
-![1691381289157](C:\Users\林枫\AppData\Roaming\Typora\typora-user-images\1691381289157.png)
+![1691385832872](img/1691385832872.png)
 
 消费端没有真正发起网络请求调用服务，而是直接返回
 
 ###### 2.删掉上述配置，但是不启动服务端
 
-![1691381412693](C:\Users\林枫\AppData\Roaming\Typora\typora-user-images\1691381412693.png)
+![1691385846861](img/1691385846861.png)
 
 可以看到进入了我们的服务重试部分，配置的最大重试次数是3次，在三次调用失败后，打印的返回结果自然为null
 
 ###### 3.先启动服务端，再启动消费端
 
-![1691381507566](C:\Users\林枫\AppData\Roaming\Typora\typora-user-images\1691381507566.png)
+![1691385862818](img/1691385862818.png)
 
 服务端成功启动
 
-![1691382198271](C:\Users\林枫\AppData\Roaming\Typora\typora-user-images\1691382198271.png)
+![1691385872964](img/1691385872964.png)
 
 ###### 4.先启动消费端，中途启动服务端
 
-![1691382142905](C:\Users\林枫\AppData\Roaming\Typora\typora-user-images\1691382142905.png)
+![1691385886324](img/1691385886324.png)
 
 可以看到在五次调用失败后，第六次成功调用并得到返回结果
 
