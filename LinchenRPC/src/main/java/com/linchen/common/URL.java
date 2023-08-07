@@ -7,7 +7,7 @@ import java.io.Serializable;
  * @Date 2023-08-06 13:36
  * @PackageName:com.linchen.common
  * @ClassName: URL
- * @Description: TODO
+ * @Description: 定义主机地址与端口号
  * @Version 1.0
  */
 public class URL implements Serializable {

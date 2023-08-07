@@ -7,7 +7,7 @@ import java.io.Serializable;
  * @Date 2023-08-06 11:19
  * @PackageName:com.linchen.common
  * @ClassName: Invocation
- * @Description: TODO
+ * @Description: 消费端调用时需要传递的参数
  * @Version 1.0
  */
 public class Invocation implements Serializable {

@@ -26,7 +26,7 @@ public class ProxyFactory {
             public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
                 //服务提供方尚未开发完成的处理：mock
                 String mock = System.getProperty("mock");
-                if(mock.startsWith("return")){
+                if(mock!=null && mock.startsWith("return")){
                     String result = mock.replaceAll("return:", "");
                     return result;
                 }
@@ -41,14 +41,15 @@ public class ProxyFactory {
                 String result = null;
                 //调用过程可能存在重试
                 int max = 0;
-                while(max!=3){
+                while(max!=10){
                     try{
                         //负载均衡
                         URL url = LoadBalance.random(urlList);
                         result = httpClient.send(url.getHostname(), url.getPort(), invocation);
+                        break;
                     }catch (Exception e){
                         //重试
-                        if(max++ !=3){
+                        if(max++ !=10){
                             System.out.println("第"+max+"次调用失败");
                             continue;
                         }
